@@ -1,0 +1,37 @@
+{
+  "name": "ztip",
+  "version": "1.0",
+  "description": "A free, ultra lightweight jQuery tooltip plugin. It is only ~1KB gzipped.",
+  "main": "ztip.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Smartik89/zTip.git"
+  },
+  "keywords": [
+    "jquery",
+    "tooltip",
+    "tip",
+    "popup",
+    "qtip",
+    "ztip",
+    "popover"
+  ],
+  "author": "ZeroWP Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Smartik89/zTip/issues"
+  },
+  "homepage": "https://github.com/Smartik89/zTip#readme",
+  "files": [
+    "ztip.js",
+    "ztip.min.js",
+    "ztip.css",
+    "ztip.less"
+  ]
+}
