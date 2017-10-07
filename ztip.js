@@ -1,3 +1,11 @@
+/**
+ * Plugin Name : zTip
+ * Version     : 1.0
+ * Author      : Andrei Surdu
+ * Author URL  : http://zerowp.com/
+ * Plugin URL  : http://ztip.zerowp.com/
+ * License     : MIT
+ */
 ;(function( $ ) {
 
 	"use strict";
@@ -160,13 +168,26 @@
 			}
 
 			// Display on top or bottom?
-			if( holder.outerHeight() + 10 < coords.top ){
-				_top = coords.top - holder.outerHeight() - 10;
-				plugin.changeHolderPosition( 'top' );
+			// TODO: DRY. The following if else needs improvements
+			if( 'bottom' === settings.position ){
+				if( holder.outerHeight() + 10 > coords.fromBottom ){
+					_top = coords.top - holder.outerHeight() - 10;
+					plugin.changeHolderPosition( 'top' );
+				}
+				else{
+					_top = coords.bottom + 10;
+					plugin.changeHolderPosition( 'bottom' );
+				}
 			}
 			else{
-				_top = coords.bottom + 10;
-				plugin.changeHolderPosition( 'bottom' );
+				if( holder.outerHeight() + 10 < coords.top ){
+					_top = coords.top - holder.outerHeight() - 10;
+					plugin.changeHolderPosition( 'top' );
+				}
+				else{
+					_top = coords.bottom + 10;
+					plugin.changeHolderPosition( 'bottom' );
+				}
 			}
 
 			// Center tooltip on X axis. If it gets out of viewport realign it.
