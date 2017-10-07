@@ -75,66 +75,18 @@
 				var coords = plugin.getElementCoordinates( elem );
 
 				// If the target elem is larger than the holder, allow the max-width to be equal to it
+				// Window is larger than this element... Ya, that's it...
 				if( holder.outerWidth() < coords.width ) {
 					holder.css({
 						'max-width': coords.width + 'px',
 					});
 				}
 
-				// TODO: Improve this switch. DRY
-				switch ( settings.position ) {
-					case 'right':
-						plugin.displayRight( coords );
-						break;
+				// The magic is here
+				plugin.autoPosition( coords );
 
-					case 'bottom':
-						console.log( holder.outerHeight() + 10 );
-						console.log( coords.fromBottom );
-						if( holder.outerHeight() + 10 > coords.fromBottom ) {
-							plugin.displayTop( coords );
-						}
-						else{
-							plugin.displayBottom( coords );
-						}
-						break;
-
-					case 'left':
-						if( holder.outerWidth() + 10 > coords.left ) {
-							plugin.displayRight( coords );
-						}
-						else{
-							plugin.displayLeft( coords );
-						}
-						break;
-
-					case 'top-right':
-						plugin.displayTopRight( coords );
-						break;
-
-					case 'bottom-right':
-						plugin.displayBottomRight( coords );
-						break;
-
-					case 'top-left':
-						plugin.displayTopLeft( coords );
-						break;
-
-					case 'bottom-left':
-						plugin.displayBottomLeft( coords );
-						break;
-
-					default:
-						if( holder.outerHeight() + 10 > coords.top ) {
-							plugin.displayBottom( coords );
-						}
-						else{
-							plugin.displayTop( coords );
-						}
-						break;
-				}
-
+				// Finally show it to user.
 				holder.addClass('ztip-show');
-				console.log( coords );
 			} );
 
 			// When the mouse leaves the container
@@ -195,103 +147,77 @@
 
 		};
 
-		// TODO: Improve next `display???` functions. Maybe combine them in one...
-		this.displayTop = function( coords ){
-			plugin.changeHolderPosition( 'top' );
+		this.autoPosition = function( coords ){
+			var _top = '',
+			_left = '',
+			viewport = plugin.getViewport();
 
+			// It's not wider than current window?
+			if( holder.outerWidth() > viewport.width ){
+				holder.css({
+					'max-width': viewport.width,
+				});
+			}
+
+			// Display on top or bottom?
+			if( holder.outerHeight() + 10 < coords.top ){
+				_top = coords.top - holder.outerHeight() - 10;
+				plugin.changeHolderPosition( 'top' );
+			}
+			else{
+				_top = coords.bottom + 10;
+				plugin.changeHolderPosition( 'bottom' );
+			}
+
+			// Center tooltip on X axis. If it gets out of viewport realign it.
+			var half_holder = holder.outerWidth() / 2,
+			is_small        = holder.outerWidth() < viewport.width,
+			maybe_left      = ( viewport.width - holder.outerWidth() ) / 2;
+
+			// Attempt to align the tooltip based element coordinates
+			// We need only the distance from left.
+			if( half_holder > coords.centerX ){
+				_left = 0;
+
+				if( is_small && maybe_left < coords.left ){
+					_left = maybe_left;
+				}
+				else if( coords.fromRight + coords.width > holder.outerWidth() ){
+					_left = coords.left;
+				}
+			}
+			else if( half_holder < coords.centerX && viewport.width - coords.centerX < half_holder ){
+				_left = viewport.width - holder.outerWidth();
+
+				if( is_small && maybe_left < coords.fromRight ){
+					_left = maybe_left;
+				}
+				else if( coords.right > holder.outerWidth() ){
+					_left = coords.right - holder.outerWidth();
+				}
+			}
+			else{
+				_left = coords.centerX - holder.outerWidth() / 2;
+			}
+
+			// Align the tooltip in space
 			plugin.holderCss({
-				'top': coords.top - holder.outerHeight() - 10 + 'px',
-				'left': coords.centerX - holder.outerWidth() / 2 + 'px'
-			},
-			{});
-		};
+				'top': ( _top !== '' ? _top + 'px' : '' ),
+				'left': ( _left !== '' ? _left + 'px' : '' ),
+			});
 
-		this.displayBottom = function( coords ){
-			plugin.changeHolderPosition( 'bottom' );
+			var rec  = holder[0].getBoundingClientRect(),
+			arr_left = coords.centerX - rec.left,
+			arr      = holder.children('.zt-arrow');
 
-			plugin.holderCss({
-				'top': coords.bottom + 10 + 'px',
-				'left': coords.centerX - holder.outerWidth() / 2 + 'px'
-			},
-			{});
-		};
-
-		this.displayRight = function( coords ){
-			plugin.changeHolderPosition( 'right' );
-
-			plugin.holderCss({
-				'top': coords.centerY - holder.outerHeight() / 2 + 'px',
-				'left': coords.right + 10 + 'px'
-			},
-			{});
-		};
-
-		this.displayLeft = function( coords ){
-			plugin.changeHolderPosition( 'left' );
-
-			plugin.holderCss({
-				'top': coords.centerY - holder.outerHeight() / 2 + 'px',
-				'left': coords.left - holder.outerWidth() - 10 + 'px',
-			},
-			{
-				// 'top'        : coords.bottom - coords.centerY,
-				// 'margin-top' : - holder.children('.zt-arrow').outerHeight() / 2,
+			// Align the arrow
+			arr.css({
+				'left'        : arr_left,
+				'margin-left' : - arr.outerWidth() / 2,
 			});
 		};
 
-		this.displayTopRight = function( coords ){
-			plugin.changeHolderPosition( 'top-right' );
-
-			plugin.holderCss({
-				'top': coords.top - holder.outerHeight() - 10 + 'px',
-				'left': coords.left + 'px',
-			},
-			{
-				'left'        : coords.right - coords.centerX,
-				'margin-left' : - holder.children('.zt-arrow').outerWidth() / 2,
-			});
-		};
-
-		this.displayBottomLeft = function( coords ){
-			plugin.changeHolderPosition( 'bottom-left' );
-
-			plugin.holderCss({
-				'top': coords.bottom + 10 + 'px',
-				'left': coords.right - holder.outerWidth() + 'px',
-			},
-			{
-				'right'        : coords.right - coords.centerX,
-				'margin-right' : - holder.children('.zt-arrow').outerWidth() / 2,
-			});
-		};
-
-		this.displayTopLeft = function( coords ){
-			plugin.changeHolderPosition( 'top-left' );
-
-			plugin.holderCss({
-				'top'  : coords.top - holder.outerHeight() - 10 + 'px',
-				'left' : coords.right - holder.outerWidth() + 'px',
-			},
-			{
-				'right'        : coords.right - coords.centerX,
-				'margin-right' : - holder.children('.zt-arrow').outerWidth() / 2,
-			});
-		};
-
-		this.displayBottomRight = function( coords ){
-			plugin.changeHolderPosition( 'bottom-right' );
-
-			plugin.holderCss({
-				'top'  : coords.bottom + 10 + 'px',
-				'left' : coords.left + 'px',
-			},
-			{
-				'left'        : coords.right - coords.centerX,
-				'margin-left' : - holder.children('.zt-arrow').outerWidth() / 2,
-			});
-		};
-
-		this.holderCss = function( holder_css, arrow_css ){
+		this.holderCss = function( holder_css ){
 			var new_holder_css = {
 				'top': holder_css.top || '',
 				'right': holder_css.right || '',
@@ -299,18 +225,7 @@
 				'left': holder_css.left || '',
 			};
 
-			var new_arrow_css = {
-				'top': arrow_css.top || '',
-				'right': arrow_css.right || '',
-				'bottom': arrow_css.bottom || '',
-				'left': arrow_css.left || '',
-				'margin-top': arrow_css['margin-top'] || '',
-				'margin-right': arrow_css['margin-right'] || '',
-				'margin-bottom': arrow_css['margin-bottom'] || '',
-				'margin-left': arrow_css['margin-left'] || '',
-			};
-
-			holder.css( new_holder_css ).children('.zt-arrow').css( new_arrow_css );
+			holder.css( new_holder_css );
 		};
 
 		/**
@@ -347,8 +262,8 @@
 
 				fromTop     : rec.top,
 				fromLeft    : rec.left,
-				fromBottom  : window.innerHeight - rec.bottom,
-				fromRight   : window.innerWidth - rec.right,
+				fromBottom  : $(window).innerHeight() - rec.bottom,
+				fromRight   : $(window).innerWidth() - rec.right,
 
 				centerX : rec.left + width / 2,
 				centerY : rec.top + height / 2,
@@ -362,34 +277,26 @@
 		 */
 		this.getViewport = function(){
 			return {
-				width  : window.innerWidth,
-				height : window.innerHeight,
+				width  : $(window).innerWidth(),
+				height : $(window).innerHeight(),
 			};
 		};
 
 		this.changeHolderPosition = function( position ){
-			var new_class = 'ztip-position-' + position;
-
-			if( ! holder.hasClass( new_class ) ) {
-				holder.removeClass (
-					function ( index, css ) {
-						return ( css.match (/\bztip-position-\S+/g) || [] ).join(' ');
-					}
-				).addClass( new_class );
-			}
-
-			return holder;
+			plugin.replaceClass( /\bztip-position-\S+/g, 'ztip-position-' + position );
 		};
 
 		this.refreshHolderTheme = function(){
-			var new_theme = 'ztip-theme-' + settings.theme;
+			plugin.replaceClass( /\bztip-theme-\S+/g, 'ztip-theme-' + settings.theme );
+		};
 
-			if( ! holder.hasClass( new_theme ) ) {
+		this.replaceClass = function( _to_replace, _with ){
+			if( ! holder.hasClass( _with ) ) {
 				holder.removeClass (
 					function ( index, css ) {
-						return ( css.match (/\bztip-theme-\S+/g) || [] ).join(' ');
+						return ( css.match ( _to_replace ) || [] ).join(' ');
 					}
-				).addClass( new_theme );
+				).addClass( _with );
 			}
 		};
 

@@ -24,16 +24,6 @@
 				border-bottom-color: @bg_color;
 			}
 		}
-		&.ztip-position-left{
-			.zt-arrow {
-				border-left-color: @bg_color;
-			}
-		}
-		&.ztip-position-right{
-			.zt-arrow {
-				border-right-color: @bg_color;
-			}
-		}
 		code {
 			background: lighten(@bg_color, 10%);
 		}
@@ -80,73 +70,25 @@
 		opacity: 1;
 	}
 
-	&.ztip-position-top-right,
-	&.ztip-position-top-left,
 	&.ztip-position-top{
 		.zt-arrow {
 			border-width: 6px 5px 0 5px;
 			border-top-color: @ztip-theme-default-bg-color;
-			left: 50%;
 			top: 100%;
 			bottom: -6px;
-			margin-left: -5px;
 		}
 	}
 
 
-	&.ztip-position-bottom-right,
-	&.ztip-position-bottom-left,
 	&.ztip-position-bottom{
 		.zt-arrow {
 			border-width: 0 5px 6px 5px;
 			border-bottom-color: @ztip-theme-default-bg-color;
-			left: 50%;
 			top: 0;
 			bottom: auto;
 			margin-top: -6px;
-			margin-left: -5px;
 		}
 	}
-
-	&.ztip-position-left{
-		.zt-arrow {
-			border-width: 5px 0 5px 6px;
-			border-left-color: @ztip-theme-default-bg-color;
-			top: 50%;
-			margin-top: -4px;
-			bottom: auto;
-			left: 100%;
-			margin-left: 0;
-		}
-	}
-	&.ztip-position-right{
-		.zt-arrow {
-			border-width: 5px 6px 5px 0;
-			border-right-color: @ztip-theme-default-bg-color;
-			top: 50%;
-			margin-top: -4px;
-			bottom: auto;
-			right: 100%;
-			margin-right: 0;
-		}
-	}
-
-
-	&.ztip-position-top-right,
-	&.ztip-position-bottom-right{
-		.zt-arrow{
-			left: 30px;
-		}
-	}
-
-	&.ztip-position-top-left,
-	&.ztip-position-bottom-left{
-		.zt-arrow{
-			left: auto;
-			right: 30px;
-		}
-	}
-
 
 	// ----------------------------------------------------------------------------
 	// Themes
@@ -170,20 +112,6 @@
 			.zt-arrow{
 				transform: rotate( 45deg );
 				margin-top: -3px;
-			}
-		}
-		&.ztip-position-right{
-			.zt-arrow{
-				transform: rotate( 135deg );
-				margin-right: -3px;
-				margin-top: -4px;
-			}
-		}
-		&.ztip-position-left{
-			.zt-arrow{
-				transform: rotate( -45deg );
-				margin-left: -3px;
-				margin-top: -4px;
 			}
 		}
 		&.ztip-position-bottom{
