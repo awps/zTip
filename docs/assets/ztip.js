@@ -25,10 +25,10 @@
 			// Theme
 			theme: 'default',
 
-			// attr:title | > .child-elem | .dom-elem | function callback
+			// TODO
 			source: 'attr:title',
 
-			// Tooltip positon relative to element top | bottom
+			// Tooltip positon relative to element
 			position: 'top',
 
 		}, options );

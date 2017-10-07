@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="assets/demo.css" />
 
 	<!-- Accordion styles -->
-	<link rel="stylesheet" href="../ztip.css" />
+	<link rel="stylesheet" href="assets/ztip.css" />
 </head>
 <body>
 	<div class="demo-header">
@@ -86,8 +86,16 @@ yarn add ztip
 		</h2>
 		<pre class="prettyprint"><code>
 &lt;script>
-    $("#my-accordion").zTip({
-        // Options here...
+    $(".my-tooltip").zTip({
+        // Theme
+        theme: 'default',
+
+        // attr:title | > .child-elem | .dom-elem | function callback
+        source: 'attr:title',
+
+        // Tooltip positon relative to element top | bottom
+        position: 'top',
+
     });
 &lt;/script>
 		</code></pre>
@@ -102,52 +110,6 @@ yarn add ztip
 		</h3>
 
 		<span class="tooltip-demo" title="I'm awesome!">Default</span>
-
-		<h3 class="section-title">Position
-			<p>By default the tooltip will be on top of target element and will auto arrange itself depending on current viewport.</p>
-		</h3>
-		<div class="tooltip-positioner-for-demo">
-			<span class="tooltip-demo xr" data-position="left" title="This tooltip is to the left.">?</span>
-			<span class="tooltip-demo xb" data-position="top" title="This tooltip is to the top.">?</span>
-			<span class="tooltip-demo xt" data-position="bottom" title="This tooltip is to the bottom.">?</span>
-			<span class="tooltip-demo xl" data-position="right" title="This tooltip is to the right.">?</span>
-
-			<span class="tooltip-demo xbl" data-position="top-right" title="This tooltip is to the top-right.">?</span>
-			<span class="tooltip-demo xbr" data-position="top-left" title="This tooltip is to the top-left.">?</span>
-			<span class="tooltip-demo xtl" data-position="bottom-right" title="This tooltip is to the bottom-right.">?</span>
-			<span class="tooltip-demo xtr" data-position="bottom-left" title="This tooltip is to the bottom-left.">?</span>
-		</div>
-
-		<h3 class="section-title">Big tooltips
-			<p>This is a test for tooltips with unusually large data.</p>
-		</h3>
-		<div class="tooltip-positioner-for-demo">
-			<span class="tooltip-demo xr" data-position="left" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem.">?</span>
-			<span class="tooltip-demo xb" data-position="top" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem.">?</span>
-			<span class="tooltip-demo xt" data-position="bottom" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem.">?</span>
-			<span class="tooltip-demo xl" data-position="right" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem.">?</span>
-
-			<span class="tooltip-demo xbl" data-position="top-right" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem-right.">?</span>
-			<span class="tooltip-demo xbr" data-position="top-left" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem-left.">?</span>
-			<span class="tooltip-demo xtl" data-position="bottom-right" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem-right.">?</span>
-			<span class="tooltip-demo xtr" data-position="bottom-left" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem-left.">?</span>
-		</div>
-
-
-		<h3 class="section-title">Re-position
-			<p>In this example you can see how the tooltip will change their position if they get out of viewport.</p>
-		</h3>
-		<div class="tooltip-positioner-for-demo">
-			<span class="tooltip-demo xl" data-position="left" title="This tooltip is to the left.">?</span>
-			<span class="tooltip-demo xt" data-position="top" title="This tooltip is to the top.">?</span>
-			<span class="tooltip-demo xb" data-position="bottom" title="This tooltip is to the bottom.">?</span>
-			<span class="tooltip-demo xr" data-position="right" title="This tooltip is to the right.">?</span>
-
-			<span class="tooltip-demo xtr" data-position="top-right" title="This tooltip is to the top-right.">?</span>
-			<span class="tooltip-demo xtl" data-position="top-left" title="This tooltip is to the top-left.">?</span>
-			<span class="tooltip-demo xbr" data-position="bottom-right" title="This tooltip is to the bottom-right.">?</span>
-			<span class="tooltip-demo xbl" data-position="bottom-left" title="This tooltip is to the bottom-left.">?</span>
-		</div>
 
 
 		<h3 class="section-title">Themes
@@ -181,6 +143,20 @@ yarn add ztip
 		</span>
 		<div style="display:none;">Using a callback function in <code>source</code> option.</div>
 
+		<h3 class="section-title">Position
+			<p>By default the tooltip will be on top of target element and will auto arrange itself depending on current viewport.</p>
+		</h3>
+		<div class="tooltip-positioner-for-demo">
+			<span class="tooltip-demo xr" data-position="left" title="This tooltip is to the left.">?</span>
+			<span class="tooltip-demo xb" data-position="bottom" title="This tooltip is to the top.">?</span>
+			<span class="tooltip-demo xt" data-position="top" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem.">?</span>
+			<span class="tooltip-demo xl" data-position="right" title="This tooltip is to the right.">?</span>
+
+			<span class="tooltip-demo xbl" data-position="top-right" title="This tooltip is to the top-right.">?</span>
+			<span class="tooltip-demo xbr" data-position="top-left" title="This tooltip is to the top-left.">?</span>
+			<span class="tooltip-demo xtl" data-position="bottom-right" title="This tooltip is to the bottom-right.">?</span>
+			<span class="tooltip-demo xtr" data-position="bottom-left" title="This tooltip is to the bottom-left.">?</span>
+		</div>
 
 	</div>
 
@@ -207,7 +183,7 @@ yarn add ztip
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-	<script type="text/javascript" src="../ztip.js"></script>
+	<script type="text/javascript" src="assets/ztip.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function($){
 			"use strict";
