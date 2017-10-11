@@ -1,6 +1,6 @@
 {
   "name": "ztip",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "A free, ultra lightweight jQuery tooltip plugin. It is only ~1KB gzipped.",
   "main": "ztip.js",
   "directories": {

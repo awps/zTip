@@ -1,6 +1,6 @@
 /**
  * Plugin Name : zTip
- * Version     : 1.0
+ * Version     : 1.0.0
  * Author      : Andrei Surdu
  * Author URL  : http://zerowp.com/
  * Plugin URL  : http://ztip.zerowp.com/
