@@ -1,20 +1,29 @@
 {
   "name": "ztip",
-  "version": "1.0.0",
-  "description": "A free, ultra lightweight jQuery tooltip plugin. It is only ~1KB gzipped.",
-  "main": "ztip.js",
+  "version": "2.0.0",
+  "description": "A free, ultra lightweight vanilla JS tooltip plugin. It is only ~1KB gzipped. No jQuery!",
+  "main": "src/index.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prod": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --watch --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "cross-env": "^5.2.0",
+    "laravel-mix": "latest",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Smartik89/zTip.git"
+    "url": "git+https://github.com/awps/zTip.git"
   },
   "keywords": [
-    "jquery",
+    "vanilla",
     "tooltip",
     "tip",
     "popup",
@@ -22,16 +31,10 @@
     "ztip",
     "popover"
   ],
-  "author": "ZeroWP Team",
+  "author": "Andrew Surdu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Smartik89/zTip/issues"
+    "url": "https://github.com/awps/zTip/issues"
   },
-  "homepage": "https://github.com/Smartik89/zTip#readme",
-  "files": [
-    "ztip.js",
-    "ztip.min.js",
-    "ztip.css",
-    "ztip.less"
-  ]
+  "homepage": "https://github.com/awps/zTip#readme"
 }

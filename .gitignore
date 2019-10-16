@@ -1,11 +1,5 @@
-node_modules
+/node_modules
+/package-lock.json
+/.idea
 .DS_Store
-.DS_Store?
-*.log
-phpcs.xml
-yarn.lock
-.phpintel
-Thumbs.db
-desktop.ini
-vendor
-prepros.cfg
+mix-manifest.json
