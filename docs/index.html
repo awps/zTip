@@ -1,74 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>zTip - Free, ultra lightweight vanilla JS tooltip plugin. No jQuery!</title>
-	<meta name="description" content="A free, ultra lightweight vanilla JS tooltip plugin. It is only ~1KB gzipped. No jQuery!">
-	<!-- Normalize -->
-	<link rel="stylesheet" href="assets/normalize.css" />
-	<link rel="stylesheet" href="assets/demo.css" />
+    <title>zTip - Free, ultra lightweight vanilla JS tooltip plugin. No jQuery!</title>
+    <meta name="description"
+          content="A free, ultra lightweight vanilla JS tooltip plugin. It is only ~1KB gzipped. No jQuery!">
+    <!-- Normalize -->
+    <link rel="stylesheet" href="assets/normalize.css"/>
+    <link rel="stylesheet" href="assets/demo.css"/>
 
-	<!-- Accordion styles -->
-	<link rel="stylesheet" href="ztip.css" />
+    <!-- Accordion styles -->
+    <link rel="stylesheet" href="ztip.css"/>
 </head>
 <body>
-	<div class="demo-header">
-		<h1>zTip</h1>
-		<div class="subheading">A free, ultra lightweight vanilla JS tooltip plugin. It is only ~1KB gzipped. No jQuery!</div>
-		<div class="demo-call-to-action">
-			<a class="github" href="https://github.com/Smartik89/zTip">
-				View on Github
-			</a>
-			<a class="download" href="https://github.com/Smartik89/zTip/archive/master.zip">
-				Download
-			</a>
-		</div>
-	</div>
+<div class="demo-header">
+    <h1>zTip</h1>
+    <div class="subheading">A free, ultra lightweight vanilla JS tooltip plugin. It is only ~1KB gzipped. No jQuery!
+    </div>
+    <div class="demo-call-to-action">
+        <a class="github" href="https://github.com/Smartik89/zTip">
+            View on Github
+        </a>
+        <a class="download" href="https://github.com/Smartik89/zTip/archive/master.zip">
+            Download
+        </a>
+    </div>
+</div>
 
-	<div class="demo-container">
+<div class="demo-container">
 
-		<h2 class="section-title">Installation
-			<p>Step by step install the plugin.</p>
-		</h2>
+    <h2 class="section-title">Installation
+        <p>Step by step install the plugin.</p>
+    </h2>
 
-		<h3>Install with <strong>npm</strong></h3>
-		<pre><code>
+    <h3>Install with <strong>npm</strong></h3>
+    <pre><code>
 npm install ztip --save
 		</code></pre>
 
-		<p>or</p>
+    <p>or</p>
 
-		<h3>Install with <strong>yarn</strong></h3>
-		<pre><code>
+    <h3>Install with <strong>yarn</strong></h3>
+    <pre><code>
 yarn add ztip
 		</code></pre>
 
-		<p>or</p>
+    <p>or</p>
 
-		<h3>Manual install</h3>
-		<p>Download the most recent version from Github and include the unzipped files in your project. Use the top link on this page.</p>
+    <h3>Manual install</h3>
+    <p>Download the most recent version from Github and include the unzipped files in your project. Use the top link on
+        this page.</p>
 
 
-		<h2 class="section-title">Getting started
-			<p>Step by step create the first ztip instance.</p>
-		</h2>
+    <h2 class="section-title">Getting started
+        <p>Step by step create the first ztip instance.</p>
+    </h2>
 
-		<p><strong>jQuery:</strong> Make sure that jQuery library is installed. If it is not that add the following line: </p>
-		<pre class="prettyprint"><code>
+    <p><strong>jQuery:</strong> Make sure that jQuery library is installed. If it is not that add the following line:
+    </p>
+    <pre class="prettyprint"><code>
 &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">&lt;/script>
 		</code></pre>
 
-		<p><strong>CSS:</strong> Next include the CSS in document <code>&lt;head></code>:</p>
-		<pre class="prettyprint"><code>
+    <p><strong>CSS:</strong> Next include the CSS in document <code>&lt;head></code>:</p>
+    <pre class="prettyprint"><code>
 &lt;link rel="stylesheet" href="<mark>ztip.css</mark>" />
 		</code></pre>
 
-		<p><strong>JS:</strong> And the JS just before the closing <code>&lt;/body></code> tag:</p>
-		<pre class="prettyprint"><code>
+    <p><strong>JS:</strong> And the JS just before the closing <code>&lt;/body></code> tag:</p>
+    <pre class="prettyprint"><code>
 &lt;script src="<mark>ztip.min.js</mark>">&lt;/script>
 		</code></pre>
 
-		<p><strong>Init:</strong> After this line add the following code to create the first instance:</p>
-		<pre class="prettyprint"><code>
+    <p><strong>Init:</strong> After this line add the following code to create the first instance:</p>
+    <pre class="prettyprint"><code>
 &lt;script>
     jQuery(document).ready(function($){
         $(<mark>".my-tooltip"</mark>).zTip();
@@ -76,15 +80,16 @@ yarn add ztip
 &lt;/script>
 		</code></pre>
 
-		<p><strong>HTML:</strong> In this example we selected all <code>.my-tooltip</code> classes. The will become targets for tooltips.</p>
-		<pre class="prettyprint"><code>
+    <p><strong>HTML:</strong> In this example we selected all <code>.my-tooltip</code> classes. The will become targets
+        for tooltips.</p>
+    <pre class="prettyprint"><code>
 &lt;span class="my-tooltip" title="My tooltip text">Hover me&lt;/span>
 		</code></pre>
 
-		<h2 class="section-title">Options
-			<!-- <p>The plugin contains a few options that can be defined directly in plugin call or using data-* attributes:</p> -->
-		</h2>
-		<pre class="prettyprint"><code>
+    <h2 class="section-title">Options
+        <!-- <p>The plugin contains a few options that can be defined directly in plugin call or using data-* attributes:</p> -->
+    </h2>
+    <pre class="prettyprint"><code>
 &lt;script>
     $(".my-tooltip").zTip({
         // Theme
@@ -100,106 +105,118 @@ yarn add ztip
 &lt;/script>
 		</code></pre>
 
-		<h2 class="section-title">Examples
-			<p>A few examples that demonstrates the plugin's power.</p>
-		</h2>
+    <h2 class="section-title">Examples
+        <p>A few examples that demonstrates the plugin's power.</p>
+    </h2>
 
 
-		<h3 class="section-title">Default example
-			<p>This is the default example with default settings.</p>
-		</h3>
+    <h3 class="section-title">Default example
+        <p>This is the default example with default settings.</p>
+    </h3>
 
-		<span class="tooltip-demo" title="I'm awesome!">Default</span>
-
-
-		<h3 class="section-title">Themes
-			<p>I believe that themes are something that every developer should create based on project requirements. Here are just a few, most basic examples.</p>
-		</h3>
-
-		<span class="tooltip-demo" data-theme="red" title="This tooltip is red.">Theme: red</span>
-		<span class="tooltip-demo" data-theme="blue" title="This tooltip is blue.">Theme: blue</span>
-		<span class="tooltip-demo" data-theme="green" title="This tooltip is green.">Theme: green</span>
-		<span class="tooltip-demo" data-theme="white" title="This tooltip is white.">Theme: white</span>
+    <span class="tooltip-demo" title="I'm awesome!">Default</span>
 
 
-		<h3 class="section-title">Source
-			<p>But default <code>zTip</code> gets the tooltip text from <code>title</code> attribute of current element(hover on). However you are not limited only to this. You can use any other element attribute or DOM element.</p>
-		</h3>
+    <h3 class="section-title">Themes
+        <p>I believe that themes are something that every developer should create based on project requirements. Here
+            are just a few, most basic examples.</p>
+    </h3>
 
-		<span class="tooltip-demo" data-source="attr:data-test" data-test="This is the tooltip from `data-test` attr." title="This is the title that you will never see.">data-*</span>
+    <span class="tooltip-demo" data-theme="red" title="This tooltip is red.">Theme: red</span>
+    <span class="tooltip-demo" data-theme="blue" title="This tooltip is blue.">Theme: blue</span>
+    <span class="tooltip-demo" data-theme="green" title="This tooltip is green.">Theme: green</span>
+    <span class="tooltip-demo" data-theme="white" title="This tooltip is white.">Theme: white</span>
 
-		<span class="tooltip-demo" data-source="> .child-test" title="This is the title that you will never see.">
+
+    <h3 class="section-title">Source
+        <p>But default <code>zTip</code> gets the tooltip text from <code>title</code> attribute of current
+            element(hover on). However you are not limited only to this. You can use any other element attribute or DOM
+            element.</p>
+    </h3>
+
+    <span class="tooltip-demo" data-source="attr:data-test" data-test="This is the tooltip from `data-test` attr."
+          title="This is the title that you will never see.">data-*</span>
+
+    <span class="tooltip-demo" data-source="> .child-test" title="This is the title that you will never see.">
 			Get a child element
 			<div class="child-test" style="display:none;">This is a <strong>child element</strong> selected with <code>&gt;.child-test</code>. Did you noticed that it supports HTML?</div>
 		</span>
 
-		<span class="tooltip-demo" data-source="#special-element" title="This is the title that you will never see.">
+    <span class="tooltip-demo" data-source="#special-element" title="This is the title that you will never see.">
 			Get DOM element
 		</span>
-		<div id="special-element" style="display:none;">This is a hidden DOM element hidden with <code>display:none</code> and accessed by its ID <strong>#special-element</strong>.</div>
+    <div id="special-element" style="display:none;">This is a hidden DOM element hidden with <code>display:none</code>
+        and accessed by its ID <strong>#special-element</strong>.
+    </div>
 
-		<span class="tooltip-demo-with-callback" title="This is the title that you will never see.">
+    <span class="tooltip-demo-with-callback" title="This is the title that you will never see.">
 			Callback
 		</span>
-		<div style="display:none;">Using a callback function in <code>source</code> option.</div>
+    <div style="display:none;">Using a callback function in <code>source</code> option.</div>
 
-		<h3 class="section-title">Position
-			<p>By default the tooltip will be on top of target element and will auto arrange itself depending on current viewport.</p>
-		</h3>
-		<div class="tooltip-positioner-for-demo">
-			<span class="tooltip-demo xr" title="This tooltip is to the left.">?</span>
-			<span class="tooltip-demo xb" title="This tooltip is to the top.">?</span>
-			<span class="tooltip-demo xt" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem.">?</span>
-			<span class="tooltip-demo xl" title="This tooltip is to the right.">?</span>
+    <h3 class="section-title">Position
+        <p>By default the tooltip will be on top of target element and will auto arrange itself depending on current
+            viewport.</p>
+    </h3>
+    <div class="tooltip-positioner-for-demo">
+        <span class="tooltip-demo xr" title="This tooltip is to the left.">?</span>
+        <span class="tooltip-demo xb" title="This tooltip is to the top.">?</span>
+        <span class="tooltip-demo xt"
+              title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum incidunt quae, illo reprehenderit, excepturi sapiente dolores facilis! Possimus, vel sequi perferendis iure veritatis asperiores voluptate ullam atque dolores cupiditate voluptatem.">?</span>
+        <span class="tooltip-demo xl" title="This tooltip is to the right.">?</span>
 
-			<span class="tooltip-demo xbl" title="This tooltip is to the top-right.">?</span>
-			<span class="tooltip-demo xbr" title="This tooltip is to the top-left.">?</span>
-			<span class="tooltip-demo xtl" title="This tooltip is to the bottom-right.">?</span>
-			<span class="tooltip-demo xtr" title="This tooltip is to the bottom-left.">?</span>
-		</div>
+        <span class="tooltip-demo xbl" title="This tooltip is to the top-right.">?</span>
+        <span class="tooltip-demo xbr" title="This tooltip is to the top-left.">?</span>
+        <span class="tooltip-demo xtl" title="This tooltip is to the bottom-right.">?</span>
+        <span class="tooltip-demo xtr" title="This tooltip is to the bottom-left.">?</span>
+    </div>
 
-	</div>
+</div>
 
-	<div class="demo-footer">
-		<div class="social-buttons">
-			<!-- Place this tag where you want the button to render. -->
-			<!-- Place this tag where you want the button to render. -->
-			<a class="github-button" href="https://github.com/Smartik89/zTip/" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-			<!-- Place this tag where you want the button to render. -->
-			<a class="github-button" href="https://github.com/Smartik89/zTip/fork" data-size="large" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork smartik89/zTip on GitHub">Fork</a>
+<div class="demo-footer">
+    <div class="social-buttons">
+        <!-- Place this tag where you want the button to render. -->
+        <!-- Place this tag where you want the button to render. -->
+        <a class="github-button" href="https://github.com/Smartik89/zTip/" data-size="large" data-show-count="true"
+           aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+        <!-- Place this tag where you want the button to render. -->
+        <a class="github-button" href="https://github.com/Smartik89/zTip/fork" data-size="large"
+           data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork smartik89/zTip on GitHub">Fork</a>
 
-			<!-- AddToAny BEGIN -->
-			<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-			<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-			<a class="a2a_button_facebook"></a>
-			<a class="a2a_button_twitter"></a>
-			<a class="a2a_button_google_plus"></a>
-			<a class="a2a_button_email"></a>
-			</div>
-			<script async src="https://static.addtoany.com/menu/page.js"></script>
-			<!-- AddToAny END -->
-		</div>
-	</div>
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_email"></a>
+        </div>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+    </div>
+</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-	<script type="text/javascript" src="ztip.js"></script>
-	<script type="text/javascript">
-		jQuery(document).ready(function($){
-			"use strict";
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script type="text/javascript" src="ztip.js"></script>
+<script type="text/javascript">
+    // jQuery(document).ready(function($){
+    // 	"use strict";
+    //
+    // 	$(".tooltip-demo").zTip();
+    //
+    //
+    // 	$(".tooltip-demo-with-callback").zTip({
+    // 		source: function( elem ) {
+    // 			return elem.next( 'div' ).html();
+    // 		},
+    // 	});
+    // });
 
-			$(".tooltip-demo").zTip();
+    zTip('.tooltip-demo');
+</script>
 
-
-			$(".tooltip-demo-with-callback").zTip({
-				source: function( elem ) {
-					return elem.next( 'div' ).html();
-				},
-			});
-		});
-	</script>
-
-	<!-- Place this tag in your head or just before your close body tag. -->
-	<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
