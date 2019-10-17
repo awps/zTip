@@ -43,7 +43,7 @@
         // Get data-* attributes
         $.each(settings, function (option) {
             var data_attr = option.replace(/([A-Z])/g, '-$1').toLowerCase().toString(), //`optionsName` becomes `option-name`
-                new_val = plugin.data(data_attr);
+                new_val = plugin.data(option);
 
             if (new_val || false === new_val) {
                 settings[option] = new_val;
